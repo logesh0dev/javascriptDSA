@@ -2,6 +2,7 @@ function maxSub(arr, k) {
     if (arr.length < k) return null;  // Edge case: not enough elements
 
     let windowSum = 0;
+    let start=0
     for (let i = 0; i < k; i++) {
         windowSum += arr[i];
     }
@@ -12,9 +13,13 @@ function maxSub(arr, k) {
         console.log(i, i-k,'=========>' ,arr[i], arr[i-k], "==>",arr[i] - arr[i - k])
         windowSum = windowSum - arr[i-k]
         windowSum = windowSum + arr[i]
-        maxSum = Math.max(maxSum, windowSum);
+        // maxSum = Math.max(maxSum, windowSum);
+        if(maxSum < windowSum){
+            maxSum=windowSum
+            start=i-k+1
+        }
     }
-
+    console.log(arr.slice(start, start+k))
     return maxSum;
     
 }

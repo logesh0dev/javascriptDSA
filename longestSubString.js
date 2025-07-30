@@ -2,6 +2,7 @@ function lengthOfLongestSubstring(s) {
   let charSet = new Set();
   let maxLength = 0;
   let left = 0;
+  let start=0
   for (let r = 0; (r < s.length); r++) {
     
     while (charSet.has(s[r])) {
@@ -9,8 +10,13 @@ function lengthOfLongestSubstring(s) {
       left++;
     }
     charSet.add(s[r]);
-    maxLength = Math.max(maxLength, r - left + 1);
+    
+    if(r-left+1 > maxLength){
+maxLength = Math.max(maxLength, r - left + 1);
+start=left
+    }
   }
+  console.log(start,s[start], s.slice(start,start+maxLength))
   return maxLength;
 }
 

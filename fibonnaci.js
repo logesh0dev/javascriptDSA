@@ -1,6 +1,6 @@
 let a=[0,1]
 let l=10
-for(let i=1;i<=l-2;i++){
+for(let i=1;i<=l-1;i++){
     a.push(a[i] + a[i-1])
 }
 
